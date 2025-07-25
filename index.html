@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> ASIS 16</title>
+  <title>Tomate Culinario - ASIS 16</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
@@ -191,7 +192,7 @@
     .price {
       font-weight: bold;
       font-size: 1.1rem;
-      color: #20bf15;
+      color: #c0392b;
       margin-top: 10px;
     }
 
@@ -208,6 +209,79 @@
       background: #111;
       color: #ecf0f1;
       margin-top: 30px;
+    }
+
+    /* Botón de WhatsApp Neon */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 
+        0 0 15px #25D366,
+        0 0 30px rgba(37, 211, 102, 0.7);
+      animation: neon-pulse 2s infinite;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 
+        0 0 20px #25D366,
+        0 0 40px rgba(37, 211, 102, 0.9);
+    }
+
+    .whatsapp-btn i {
+      font-size: 40px;
+      color: white;
+    }
+
+    .whatsapp-btn::after {
+      content: "Ordena por WhatsApp";
+      position: absolute;
+      top: -45px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      background: #25D366;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 25px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .whatsapp-btn:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes neon-pulse {
+      0% {
+        box-shadow: 
+          0 0 10px #25D366,
+          0 0 20px rgba(37, 211, 102, 0.7);
+      }
+      50% {
+        box-shadow: 
+          0 0 20px #25D366,
+          0 0 40px rgba(37, 211, 102, 0.9);
+      }
+      100% {
+        box-shadow: 
+          0 0 10px #25D366,
+          0 0 20px rgba(37, 211, 102, 0.7);
+      }
     }
 
     /* Responsive */
@@ -278,6 +352,17 @@
         height: 150px;
         border-left: none;
         border-top: 3px solid #f1c40f;
+      }
+      
+      .whatsapp-btn {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .whatsapp-btn i {
+        font-size: 32px;
       }
     }
   </style>

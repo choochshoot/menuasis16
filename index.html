@@ -1,260 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tomate Culinario</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #fff;
-      color: #000;
-      line-height: 1.6;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #111;
     }
 
-    .header {
-      background-color: #fff;
-      padding: 20px;
-      text-align: center;
+    header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 10px;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
     }
 
-    .logo {
-      width: 100px;
-      margin-bottom: 10px;
+    .float-button {
+      font-size: 12px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 20px;
+      background-color: #000;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
     }
 
-    .subtitle {
-      font-size: 1.2rem;
-      color: #333;
-    }
-
-    .info-banner {
-      text-align: center;
-      padding: 30px;
-    }
-
-    .category-section {
-      padding: 40px 20px;
-    }
-
-    .category-title {
-      font-size: 2rem;
-      text-align: center;
-      margin: 60px 0 20px;
-      font-weight: bold;
+    .float-button:hover {
+      background-color: #444;
     }
 
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
     }
 
     .menu-item {
-      border: 1px solid #000;
-      border-radius: 8px;
-      background-color: #fff;
-      padding: 15px;
       display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease;
+      background: #f5f5f5;
+      border-radius: 10px;
       overflow: hidden;
+      height: 130px;
     }
 
-    .item-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .text-content {
+    .menu-text {
+      padding: 10px;
       flex: 1;
-      padding-right: 15px;
-      text-align: left;
     }
 
-    .gif-img {
-      width: 120px;
-      height: auto;
-      border-radius: 8px;
-      flex-shrink: 0;
-      opacity: 0;
-      transform: translateX(30px);
-      transition: all 0.8s ease-in-out;
+    .menu-text h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
     }
 
-    .gif-img.fade-in-right.visible {
-      opacity: 1;
-      transform: translateX(0);
+    .menu-text p {
+      font-size: 13px;
     }
 
     .price {
       font-weight: bold;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
-    .category-fixed {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 300px;
-      height: 250px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 10px;
-      background-color: rgba(255, 255, 255, 0.95);
-      border: 1px solid #000;
-      padding: 10px;
-      z-index: 999;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .category-card {
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      text-align: center;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      padding: 10px;
-    }
-
-    .category-card:hover {
-      background-color: #333;
+    .menu-item img {
+      width: 130px;
+      object-fit: cover;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background: #f0f0f0;
-      margin-top: 100px;
+      font-size: 12px;
+      padding: 30px 10px 10px;
+    }
+
+    @media (min-width: 768px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
+
 <body>
-  <header class="header">
-    <img src="https://i.imgur.com/MVScWOe.png" alt="Tomate Culinario Logo" class="logo" />
-    <h1>ASIS 16</h1>
-    <p class="subtitle">Restaurante cerca de ti</p>
+  <header>
+    <button class="float-button" onclick="scrollToSection('desayunos')">DESAYUNOS</button>
+    <button class="float-button" onclick="scrollToSection('comidas')">COMIDAS</button>
+    <button class="float-button" onclick="scrollToSection('snacks')">SNACKS</button>
+    <button class="float-button" onclick="scrollToSection('bebidas')">BEBIDAS</button>
   </header>
 
-  <div class="info-banner">
-    <h2>MENU</h2>
-    <p>Elige una categoría para ver nuestras opciones</p>
+  <!-- SECCIONES -->
+  <h2 id="desayunos" style="text-align:center;margin:20px 0">DESAYUNOS</h2>
+  <!-- Insertar aquí cards de desayunos -->
+
+  <div class="menu-grid" id="desayunos">
+    <!-- contenido generado -->
   </div>
 
-  <!-- Secciones del menú -->
-  <div id="desayunos" class="category-section">
-    <h2 class="category-title">DESAYUNOS</h2>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <div class="item-content">
-          <div class="text-content">
-            <h3>Chilaquiles Verdes</h3>
-            <p>Totopos con salsa verde, crema, queso y cebolla.</p>
-            <div class="price">$85.00 MXN</div>
-          </div>
-          <img src="https://media.giphy.com/media/KzJkzjggfGN5Py6nkT/giphy.gif" class="gif-img fade-in-right" alt="Chilaquiles" />
-        </div>
-      </div>
-      <!-- Añadir más platillos similares -->
-    </div>
+  <h2 id="comidas" style="text-align:center;margin:20px 0">COMIDAS</h2>
+  <div class="menu-grid" id="comidas">
+    <!-- contenido generado -->
   </div>
 
-  <div id="comidas" class="category-section">
-    <h2 class="category-title">COMIDAS</h2>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <div class="item-content">
-          <div class="text-content">
-            <h3>Enchiladas Rojas</h3>
-            <p>Rellenas de pollo con salsa roja, crema y queso.</p>
-            <div class="price">$95.00 MXN</div>
-          </div>
-          <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" class="gif-img fade-in-right" alt="Enchiladas" />
-        </div>
-      </div>
-    </div>
+  <h2 id="snacks" style="text-align:center;margin:20px 0">SNACKS</h2>
+  <div class="menu-grid" id="snacks">
+    <!-- contenido generado -->
   </div>
 
-  <div id="snacks" class="category-section">
-    <h2 class="category-title">SNACKS</h2>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <div class="item-content">
-          <div class="text-content">
-            <h3>Papas a la Francesa</h3>
-            <p>Crujientes y doradas, acompañadas de salsa.</p>
-            <div class="price">$45.00 MXN</div>
-          </div>
-          <img src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" class="gif-img fade-in-right" alt="Papas" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="bebidas" class="category-section">
-    <h2 class="category-title">BEBIDAS</h2>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <div class="item-content">
-          <div class="text-content">
-            <h3>Jugo de Naranja</h3>
-            <p>Natural y recién exprimido.</p>
-            <div class="price">$30.00 MXN</div>
-          </div>
-          <img src="https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif" class="gif-img fade-in-right" alt="Jugo" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navegación flotante -->
-  <div class="category-fixed">
-    <div class="category-card" onclick="scrollToSection('desayunos')">DESAYUNOS</div>
-    <div class="category-card" onclick="scrollToSection('comidas')">COMIDAS</div>
-    <div class="category-card" onclick="scrollToSection('snacks')">SNACKS</div>
-    <div class="category-card" onclick="scrollToSection('bebidas')">BEBIDAS</div>
+  <h2 id="bebidas" style="text-align:center;margin:20px 0">BEBIDAS</h2>
+  <div class="menu-grid" id="bebidas">
+    <!-- contenido generado -->
   </div>
 
   <footer>
-    <p>© 2025 Tomate Culinario. Todos los derechos reservados.</p>
+    &copy; 2025 Tomate Culinario. Todos los derechos reservados.
   </footer>
 
   <script>
     function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
-
-    const gifs = document.querySelectorAll('.fade-in-right');
-    function showOnScroll() {
-      const triggerBottom = window.innerHeight * 0.9;
-      gifs.forEach(gif => {
-        const gifTop = gif.getBoundingClientRect().top;
-        if (gifTop < triggerBottom) {
-          gif.classList.add('visible');
-        } else {
-          gif.classList.remove('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', showOnScroll);
-    window.addEventListener('load', showOnScroll);
   </script>
 </body>
+
 </html>
+
 
 

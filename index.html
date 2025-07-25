@@ -60,76 +60,96 @@
       margin: 20px 0;
     }
 
-    .floating-nav {
+    .category-buttons {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgba(255, 255, 255, 0.95);
       width: 300px;
       height: 250px;
-      background-color: #fff;
-      border: 2px solid #000;
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(2, 1fr);
       gap: 10px;
-    }
-
-    .nav-card {
-      cursor: pointer;
-      text-align: center;
-      border: 1px solid #000;
-      border-radius: 8px;
       padding: 10px;
-      background-color: #fff;
-      font-size: 0.9rem;
-      font-weight: bold;
-      transition: background-color 0.3s;
+      z-index: 1000;
+      border: 2px solid #000;
+      border-radius: 10px;
     }
 
-    .nav-card:hover {
-      background-color: #eee;
+    .category-buttons button {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .category-buttons button:hover {
+      background-color: #333;
     }
 
     .category-title {
       text-align: center;
       font-size: 2rem;
-      margin: 40px 0 20px;
+      margin: 60px 0 20px;
       font-weight: bold;
     }
 
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      margin-bottom: 60px;
+      margin-bottom: 80px;
     }
 
     .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       border: 1px solid #000;
-      padding: 20px;
+      padding: 15px;
       border-radius: 8px;
       background-color: #fff;
-      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .menu-item h3 {
+    .menu-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu-text {
+      flex: 1;
+      padding-right: 10px;
+    }
+
+    .menu-text h3 {
       font-size: 1.2rem;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
-    .menu-item p {
-      font-size: 1rem;
-      margin-bottom: 10px;
+    .menu-text p {
+      font-size: 0.95rem;
+      margin-bottom: 5px;
     }
 
     .price {
       font-weight: bold;
-      font-size: 1.4rem;
-      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    .menu-item img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
     }
 
     .footer {
@@ -137,7 +157,11 @@
       color: #fff;
       text-align: center;
       padding: 30px 20px;
-      margin-top: 40px;
+    }
+
+    .footer h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
     }
 
     @media (max-width: 768px) {
@@ -145,16 +169,23 @@
         font-size: 2rem;
       }
 
-      .floating-nav {
-        width: 100%;
+      .category-buttons {
+        width: 95vw;
         height: auto;
-        bottom: 0;
-        right: 0;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, auto);
-        border-radius: 0;
-        border: none;
-        border-top: 2px solid #000;
+        grid-template-rows: auto;
+        bottom: 10px;
+        right: 2.5%;
+      }
+
+      .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu-item img {
+        margin-top: 10px;
+        align-self: flex-end;
       }
     }
   </style>
@@ -172,59 +203,189 @@
       <p>Elige una categoría para ver nuestras opciones</p>
     </div>
 
-    <div id="desayunos">
-      <h2 class="category-title">Desayunos</h2>
-      <div class="menu-grid">
-        <div class="menu-item"><h3>Chilaquiles Verdes</h3><p>Con pollo y crema</p><p class="price">$90 MXN</p></div>
-        <div class="menu-item"><h3>Molletes</h3><p>Con frijoles y queso gratinado</p><p class="price">$70 MXN</p></div>
-        <div class="menu-item"><h3>Omelette</h3><p>Relleno de jamón y queso</p><p class="price">$85 MXN</p></div>
-        <div class="menu-item"><h3>Hot Cakes</h3><p>Con miel de maple</p><p class="price">$75 MXN</p></div>
+    <!-- DESAYUNOS -->
+    <h2 id="desayunos" class="category-title">Desayunos</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Huevos Rancheros</h3>
+          <p>Huevos sobre tortilla frita con salsa roja y frijoles refritos.</p>
+          <div class="price">$95 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/3o7TKP3YT69vEZZB5y/giphy.gif" alt="Huevos Rancheros" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Molletes</h3>
+          <p>Pan con frijoles, queso gratinado y pico de gallo.</p>
+          <div class="price">$80 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/3o7TKPdUkkbGUMp3Di/giphy.gif" alt="Molletes" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Hotcakes</h3>
+          <p>Con miel de maple, mantequilla y fruta fresca.</p>
+          <div class="price">$90 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/XA2F2eEPuHMz4/giphy.gif" alt="Hotcakes" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Omelette de Espinacas</h3>
+          <p>Relleno de espinacas y queso, acompañado con pan.</p>
+          <div class="price">$100 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/J5BzTbkGA0GzW/giphy.gif" alt="Omelette" />
       </div>
     </div>
 
-    <div id="comidas">
-      <h2 class="category-title">Comidas</h2>
-      <div class="menu-grid">
-        <div class="menu-item"><h3>Enchiladas Rojas</h3><p>De pollo con queso</p><p class="price">$100 MXN</p></div>
-        <div class="menu-item"><h3>Tacos Dorados</h3><p>Con papa o pollo</p><p class="price">$85 MXN</p></div>
-        <div class="menu-item"><h3>Pechuga Asada</h3><p>Con ensalada y arroz</p><p class="price">$110 MXN</p></div>
-        <div class="menu-item"><h3>Hamburguesa</h3><p>Con papas a la francesa</p><p class="price">$95 MXN</p></div>
+    <!-- COMIDAS -->
+    <h2 id="comidas" class="category-title">Comidas</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Chilaquiles Verdes</h3>
+          <p>Totopos bañados en salsa verde con pollo y crema.</p>
+          <div class="price">$110 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/26gR1vDUTjAjBJk08/giphy.gif" alt="Chilaquiles" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Tacos Dorados</h3>
+          <p>De papa o pollo, acompañados de lechuga, crema y queso.</p>
+          <div class="price">$85 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/5xtDarzp5at2qwSTmE4/giphy.gif" alt="Tacos Dorados" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Ensalada César</h3>
+          <p>Con pollo a la parrilla, crutones y aderezo clásico.</p>
+          <div class="price">$105 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/yJilJW7b3kVjy/giphy.gif" alt="Ensalada" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Sopa del Día</h3>
+          <p>Pregunta por nuestra deliciosa sopa casera.</p>
+          <div class="price">$65 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/3ov9k2VOF9x9XXUeBa/giphy.gif" alt="Sopa" />
       </div>
     </div>
 
-    <div id="snacks">
-      <h2 class="category-title">Snacks</h2>
-      <div class="menu-grid">
-        <div class="menu-item"><h3>Nachos</h3><p>Con queso y jalapeños</p><p class="price">$60 MXN</p></div>
-        <div class="menu-item"><h3>Quesadillas</h3><p>De queso o champiñones</p><p class="price">$55 MXN</p></div>
-        <div class="menu-item"><h3>Panini</h3><p>De jamón y queso</p><p class="price">$75 MXN</p></div>
-        <div class="menu-item"><h3>Fruta Picada</h3><p>Con chilito y limón</p><p class="price">$50 MXN</p></div>
+    <!-- SNACKS -->
+    <h2 id="snacks" class="category-title">Snacks</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Nachos</h3>
+          <p>Con queso cheddar, jalapeños y frijoles.</p>
+          <div class="price">$70 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/xUOxeY2v3J6xLt1Ic8/giphy.gif" alt="Nachos" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Guacamole</h3>
+          <p>Con totopos crujientes recién horneados.</p>
+          <div class="price">$60 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif" alt="Guacamole" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Papas a la Francesa</h3>
+          <p>Con salsa chipotle o kétchup.</p>
+          <div class="price">$55 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/xUPGcjGy8I928yIlAQ/giphy.gif" alt="Papas" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Mini Baguette</h3>
+          <p>Jamón de pavo, queso y aderezo especial.</p>
+          <div class="price">$65 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/l2SpVKgC4xMH6cP2c/giphy.gif" alt="Baguette" />
       </div>
     </div>
 
-    <div id="bebidas">
-      <h2 class="category-title">Bebidas</h2>
-      <div class="menu-grid">
-        <div class="menu-item"><h3>Agua de Horchata</h3><p>Vaso mediano</p><p class="price">$25 MXN</p></div>
-        <div class="menu-item"><h3>Café Americano</h3><p>Caliente o frío</p><p class="price">$30 MXN</p></div>
-        <div class="menu-item"><h3>Licuado</h3><p>De plátano o fresa</p><p class="price">$40 MXN</p></div>
-        <div class="menu-item"><h3>Jugo Natural</h3><p>Naranja o zanahoria</p><p class="price">$35 MXN</p></div>
+    <!-- BEBIDAS -->
+    <h2 id="bebidas" class="category-title">Bebidas</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Agua de Horchata</h3>
+          <p>Tradicional y refrescante, hecha en casa.</p>
+          <div class="price">$35 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Horchata" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Café Americano</h3>
+          <p>Caliente o frío, ideal para cualquier momento.</p>
+          <div class="price">$40 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/MF6eowLyXk6cQ/giphy.gif" alt="Café" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Jugo Natural</h3>
+          <p>Naranja, zanahoria o verde. 100% natural.</p>
+          <div class="price">$45 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/R91ll7Nbjcvcs/giphy.gif" alt="Jugo" />
+      </div>
+      <div class="menu-item">
+        <div class="menu-text">
+          <h3>Refresco</h3>
+          <p>Botella 355ml. Variedad de sabores.</p>
+          <div class="price">$25 MXN</div>
+        </div>
+        <img src="https://media.giphy.com/media/10tIjpzIu8fe0/giphy.gif" alt="Refresco" />
       </div>
     </div>
   </div>
 
-  <div class="floating-nav">
-    <a href="#desayunos" class="nav-card">Desayunos</a>
-    <a href="#comidas" class="nav-card">Comidas</a>
-    <a href="#snacks" class="nav-card">Snacks</a>
-    <a href="#bebidas" class="nav-card">Bebidas</a>
+  <!-- Botones flotantes -->
+  <div class="category-buttons">
+    <button onclick="scrollToSection('desayunos')">DESAYUNOS</button>
+    <button onclick="scrollToSection('comidas')">COMIDAS</button>
+    <button onclick="scrollToSection('snacks')">SNACKS</button>
+    <button onclick="scrollToSection('bebidas')">BEBIDAS</button>
   </div>
 
   <footer class="footer">
     <h3>ASIS 16</h3>
-    <p>También puedes pedir por whatsapp</p>
-    <p>Desayuna, Come, Repeat</p>
-    <p>Muy cerca de ti</p>
+    <p>También puedes pedir por WhatsApp</p>
+    <p>Desayuna, come, repeat. Muy cerca de ti.</p>
   </footer>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Animación al hacer scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.menu-item').forEach(item => {
+      observer.observe(item);
+    });
+  </script>
 </body>
 </html>
+

@@ -19,21 +19,21 @@
       padding-top: 140px;
     }
 
-    /* Banner superior */
+    /* Banner superior - Estilo negro */
     .top-banner {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 140px;
-      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      background: linear-gradient(135deg, #000, #222);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 15px;
       z-index: 1001;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     .logo-container {
@@ -41,35 +41,25 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      text-align: center;
     }
 
     .logo-gif {
-      width: 80px;
+      width: 100px;
       height: 80px;
-      border-radius: 50%;
-      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3);
-      animation: pulse 2s infinite;
       overflow: hidden;
+      border-radius: 8px;
     }
 
-    .logo-gif::before {
-      content: "";
-      display: block;
+    .logo-gif img {
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle, #e74c3c 20%, transparent 20%),
-        radial-gradient(circle, transparent 20%, #e74c3c 20%, transparent 30%),
-        radial-gradient(circle, #e74c3c 20%, transparent 20%), 
-        radial-gradient(circle, #e74c3c 20%, transparent 20%),
-        #fff;
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 10px, 20px 0, 10px 30px;
-      animation: rotate 5s linear infinite;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
 
     .banner-title {
@@ -78,8 +68,8 @@
       font-weight: 800;
       text-align: center;
       margin-top: 10px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       letter-spacing: 1px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     }
 
     /* Botones flotantes */
@@ -118,6 +108,7 @@
 
     .float-button::before {
       content: "👉";
+      font-size: 16px;
     }
 
     /* Contenido principal */
@@ -132,7 +123,7 @@
       margin: 25px 0;
       padding: 15px 0;
       font-size: 1.8rem;
-      color: #c0392b;
+      color: #2c3e50;
       position: relative;
     }
 
@@ -144,7 +135,7 @@
       transform: translateX(-50%);
       width: 100px;
       height: 3px;
-      background: linear-gradient(to right, #e74c3c, #f39c12);
+      background: linear-gradient(to right, #222, #555);
       border-radius: 3px;
     }
 
@@ -192,7 +183,7 @@
     .price {
       font-weight: bold;
       font-size: 1.1rem;
-      color: #e74c3c;
+      color: #c0392b;
       margin-top: 10px;
     }
 
@@ -206,21 +197,9 @@
       text-align: center;
       font-size: 0.9rem;
       padding: 30px 10px 20px;
-      background: #2c3e50;
+      background: #111;
       color: #ecf0f1;
       margin-top: 30px;
-    }
-
-    /* Animaciones */
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-      70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
 
     /* Responsive */
@@ -240,7 +219,7 @@
       }
       
       .logo-gif {
-        width: 60px;
+        width: 80px;
         height: 60px;
       }
       
@@ -252,6 +231,7 @@
         top: 120px;
         padding: 8px;
         gap: 5px;
+        flex-wrap: wrap;
       }
       
       .float-button {
@@ -282,7 +262,9 @@
   <!-- Banner superior con logo -->
   <div class="top-banner">
     <div class="logo-container">
-      <div class="logo-gif"></div>
+      <div class="logo-gif">
+        <img src="https://i.imgur.com/6TvHNSr.png" alt="Logo ASIS 16">
+      </div>
       <h1 class="banner-title">ASIS 16</h1>
     </div>
   </div>
@@ -488,10 +470,10 @@
       const banner = document.querySelector('.top-banner');
       if (window.scrollY > 50) {
         banner.style.height = '110px';
-        banner.style.boxShadow = '0 3px 8px rgba(0, 0, 0, 0.2)';
+        banner.style.boxShadow = '0 3px 8px rgba(0, 0, 0, 0.3)';
       } else {
         banner.style.height = '140px';
-        banner.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+        banner.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.4)';
       }
     });
   </script>

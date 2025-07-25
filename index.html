@@ -25,7 +25,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 170px;
+      height: 140px;
       background: linear-gradient(135deg, #000, #222);
       display: flex;
       flex-direction: column;
@@ -34,6 +34,15 @@
       padding: 15px;
       z-index: 1001;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .banner-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      width: 100%;
     }
 
     .logo-container {
@@ -46,7 +55,7 @@
 
     .logo-gif {
       width: 100px;
-      height: 85px;
+      height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -57,7 +66,7 @@
     .logo-gif img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
@@ -67,7 +76,6 @@
       font-size: 2.2rem;
       font-weight: 800;
       text-align: center;
-      margin-top: 10px;
       letter-spacing: 1px;
       text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     }
@@ -183,7 +191,7 @@
     .price {
       font-weight: bold;
       font-size: 1.1rem;
-      color: #20bf15;
+      color: #c0392b;
       margin-top: 10px;
     }
 
@@ -209,26 +217,43 @@
       }
     }
 
-    @media (max-width: 600px) {
-      body {
-        padding-top: 120px;
-      }
-      
-      .top-banner {
-        height: 120px;
+    @media (max-width: 800px) {
+      .banner-content {
+        flex-direction: column;
+        gap: 5px;
       }
       
       .logo-gif {
         width: 80px;
-        height: 60px;
+        height: 80px;
       }
       
       .banner-title {
         font-size: 1.8rem;
+        margin-top: 5px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding-top: 150px;
+      }
+      
+      .top-banner {
+        height: 150px;
+      }
+      
+      .logo-gif {
+        width: 70px;
+        height: 70px;
+      }
+      
+      .banner-title {
+        font-size: 1.6rem;
       }
       
       header {
-        top: 120px;
+        top: 150px;
         padding: 8px;
         gap: 5px;
         flex-wrap: wrap;
@@ -261,11 +286,13 @@
 <body>
   <!-- Banner superior con logo -->
   <div class="top-banner">
-    <div class="logo-container">
-      <div class="logo-gif">
-        <img src="https://i.imgur.com/6TvHNSr.png" alt="Logo ASIS 16">
+    <div class="banner-content">
+      <div class="logo-container">
+        <div class="logo-gif">
+          <img src="https://i.imgur.com/6TvHNSr.png" alt="Logo ASIS 16">
+        </div>
+        <h1 class="banner-title">ASIS 16</h1>
       </div>
-      <h1 class="banner-title">ASIS 16</h1>
     </div>
   </div>
 

@@ -16,17 +16,82 @@
       font-family: Arial, sans-serif;
       background: #fff;
       color: #111;
+      padding-top: 80px; /* Espacio para el banner */
+    }
+
+    .banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+      padding: 0 15px;
+    }
+
+    .banner-content {
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-gif {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #e74c3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .logo-text {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .special-text {
+      background: linear-gradient(90deg, #e74c3c, #f39c12);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 15px;
     }
 
     header {
       position: sticky;
-      top: 0;
+      top: 80px; /* Debajo del banner */
       background: #fff;
       padding: 10px;
       z-index: 1000;
       display: flex;
       justify-content: center;
       gap: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .float-button {
@@ -38,6 +103,7 @@
       color: #fff;
       cursor: pointer;
       transition: background 0.3s;
+      flex-shrink: 0;
     }
 
     .float-button:hover {
@@ -59,6 +125,12 @@
       border-radius: 10px;
       overflow: hidden;
       height: 130px;
+      transition: transform 0.3s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .menu-text {
@@ -73,11 +145,13 @@
 
     .menu-text p {
       font-size: 13px;
+      color: #555;
     }
 
     .price {
       font-weight: bold;
       margin-top: 8px;
+      color: #e74c3c;
     }
 
     .menu-item img {
@@ -89,6 +163,8 @@
       text-align: center;
       font-size: 12px;
       padding: 30px 10px 10px;
+      background: #f9f9f9;
+      margin-top: 20px;
     }
 
     @media (min-width: 768px) {
@@ -96,10 +172,58 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    @media (max-width: 600px) {
+      body {
+        padding-top: 70px;
+      }
+      
+      .banner {
+        height: 70px;
+      }
+      
+      .logo-text {
+        font-size: 18px;
+      }
+      
+      .logo-gif {
+        height: 50px;
+        width: 50px;
+      }
+      
+      header {
+        top: 70px;
+        flex-wrap: wrap;
+        padding: 5px;
+      }
+      
+      .float-button {
+        font-size: 10px;
+        padding: 5px 8px;
+        margin: 2px;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .special-text {
+        display: none;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!-- Banner superior -->
+  <div class="banner">
+    <div class="banner-content">
+      <div class="logo-container">
+        <div class="logo-gif">LOGO<br>ANIMADO</div>
+        <div class="logo-text">ASIS 16</div>
+      </div>
+      <div class="special-text">Tomate Culinario</div>
+    </div>
+  </div>
+
   <header>
     <button class="float-button" onclick="scrollToSection('desayunos')">DESAYUNOS</button>
     <button class="float-button" onclick="scrollToSection('comidas')">COMIDAS</button>
@@ -110,157 +234,146 @@
   <!-- SECCIONES -->
   <h2 id="desayunos" style="text-align:center;margin:20px 0">DESAYUNOS</h2>
   <div class="menu-grid" id="desayunos">
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Huevitos al gusto</h3>
-      <p>Servidos con pan brioche, tocino y frijoles. Incluye café o té.</p>
-      <div class="price">$95.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Huevitos al gusto</h3>
+        <p>Servidos con pan brioche, tocino y frijoles. Incluye café o té.</p>
+        <div class="price">$95.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="Huevitos" />
     </div>
-    <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="Huevitos" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Chilaquiles verdes</h3>
-      <p>Con crema, queso, cebolla y un toque picosito. Puedes agregar pollo.</p>
-      <div class="price">$110.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Chilaquiles verdes</h3>
+        <p>Con crema, queso, cebolla y un toque picosito. Puedes agregar pollo.</p>
+        <div class="price">$110.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif" alt="Chilaquiles" />
     </div>
-    <img src="https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif" alt="Chilaquiles" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Molletes clásicos</h3>
-      <p>Pan con frijoles, queso gratinado y pico de gallo.</p>
-      <div class="price">$85.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Molletes clásicos</h3>
+        <p>Pan con frijoles, queso gratinado y pico de gallo.</p>
+        <div class="price">$85.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnh2dHgyZmc2ZDNwOGVndzU0aWczZnA4MGtzZDBmbjZkZ3NqY3h5biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/HUyvPjb9g1XUSc7dEU/giphy.gif" alt="Molletes" />
     </div>
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnh2dHgyZmc2ZDNwOGVndzU0aWczZnA4MGtzZDBmbjZkZ3NqY3h5biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/HUyvPjb9g1XUSc7dEU/giphy.gif" alt="Molletes" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Pancakes</h3>
-      <p>Con miel de maple, mantequilla y frutas frescas.</p>
-      <div class="price">$100.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Pancakes</h3>
+        <p>Con miel de maple, mantequilla y frutas frescas.</p>
+        <div class="price">$100.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif" alt="Pancakes" />
     </div>
-    <img src="https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif" alt="Pancakes" />
-  </div>
-</div>
-
-
-  <div class="menu-grid" id="desayunos">
-    <!-- contenido generado -->
   </div>
 
   <h2 id="comidas" style="text-align:center;margin:20px 0">COMIDAS</h2>
   <div class="menu-grid" id="comidas">
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Chapata de pollo</h3>
-      <p>Con aderezo de chipotle, espinaca y queso panela.</p>
-      <div class="price">$120.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Chapata de pollo</h3>
+        <p>Con aderezo de chipotle, espinaca y queso panela.</p>
+        <div class="price">$120.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/SphxMtzVYB9XK/giphy.gif" alt="Chapata" />
     </div>
-    <img src="https://media.giphy.com/media/SphxMtzVYB9XK/giphy.gif" alt="Chapata" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Ensalada César</h3>
-      <p>Con pollo a la plancha, crutones y aderezo casero.</p>
-      <div class="price">$105.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Ensalada César</h3>
+        <p>Con pollo a la plancha, crutones y aderezo casero.</p>
+        <div class="price">$105.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/l1J9sNFAdJceSPX2M/giphy.gif" alt="Ensalada" />
     </div>
-    <img src="https://media.giphy.com/media/l1J9sNFAdJceSPX2M/giphy.gif" alt="Ensalada" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Lasagna de carne</h3>
-      <p>Capas de pasta, carne molida y queso derretido.</p>
-      <div class="price">$140.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Lasagna de carne</h3>
+        <p>Capas de pasta, carne molida y queso derretido.</p>
+        <div class="price">$140.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/3o7TKz5R2gkTUxB52w/giphy.gif" alt="Lasagna" />
     </div>
-    <img src="https://media.giphy.com/media/3o7TKz5R2gkTUxB52w/giphy.gif" alt="Lasagna" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Arroz con pollo</h3>
-      <p>Estilo casero, con verduras salteadas y especias suaves.</p>
-      <div class="price">$115.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Arroz con pollo</h3>
+        <p>Estilo casero, con verduras salteadas y especias suaves.</p>
+        <div class="price">$115.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B6bzZlOTAwZGQ1d3Znc3Fncml0dDV6anRnMms3amF3YWZvcG5hZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o6Zt481isNVuQI1l6/giphy.gif" alt="Arroz con Pollo" />
     </div>
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B6bzZlOTAwZGQ1d3Znc3Fncml0dDV6anRnMms3amF3YWZvcG5hZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o6Zt481isNVuQI1l6/giphy.gif" alt="Arroz con Pollo" />
-  </div>
-</div>
-
   </div>
 
   <h2 id="snacks" style="text-align:center;margin:20px 0">SNACKS</h2>
   <div class="menu-grid" id="snacks">
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Mix de frutos secos</h3>
-      <p>Mezcla de nueces, pasas, arándanos y semillas.</p>
-      <div class="price">$60.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Mix de frutos secos</h3>
+        <p>Mezcla de nueces, pasas, arándanos y semillas.</p>
+        <div class="price">$60.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/U2nN0ridM4lXy/giphy.gif" alt="Frutos secos" />
     </div>
-    <img src="https://media.giphy.com/media/U2nN0ridM4lXy/giphy.gif" alt="Frutos secos" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Yogurt con granola</h3>
-      <p>Con frutas de temporada y miel natural.</p>
-      <div class="price">$70.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Yogurt con granola</h3>
+        <p>Con frutas de temporada y miel natural.</p>
+        <div class="price">$70.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/fdW4dLOQjIqL6/giphy.gif" alt="Yogurt" />
     </div>
-    <img src="https://media.giphy.com/media/fdW4dLOQjIqL6/giphy.gif" alt="Yogurt" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Hummus con pita</h3>
-      <p>Dip de garbanzo con pan pita tostado.</p>
-      <div class="price">$75.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Hummus con pita</h3>
+        <p>Dip de garbanzo con pan pita tostado.</p>
+        <div class="price">$75.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/3o7bu9t013u9ldRjEA/giphy.gif" alt="Hummus" />
     </div>
-    <img src="https://media.giphy.com/media/3o7bu9t013u9ldRjEA/giphy.gif" alt="Hummus" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Brownie casero</h3>
-      <p>Con nuez y chispas de chocolate oscuro.</p>
-      <div class="price">$65.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Brownie casero</h3>
+        <p>Con nuez y chispas de chocolate oscuro.</p>
+        <div class="price">$65.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/KzJkzjggfGN5Py6nkT/giphy.gif" alt="Brownie" />
     </div>
-    <img src="https://media.giphy.com/media/KzJkzjggfGN5Py6nkT/giphy.gif" alt="Brownie" />
-  </div>
-</div>
-
   </div>
 
   <h2 id="bebidas" style="text-align:center;margin:20px 0">BEBIDAS</h2>
   <div class="menu-grid" id="bebidas">
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Agua de jamaica</h3>
-      <p>Refrescante, natural y ligeramente endulzada.</p>
-      <div class="price">$35.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Agua de jamaica</h3>
+        <p>Refrescante, natural y ligeramente endulzada.</p>
+        <div class="price">$35.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/3oKIPoM8R8EoH2YhDi/giphy.gif" alt="Jamaica" />
     </div>
-    <img src="https://media.giphy.com/media/3oKIPoM8R8EoH2YhDi/giphy.gif" alt="Jamaica" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Cold brew</h3>
-      <p>Café frío de extracción lenta, servido con hielo.</p>
-      <div class="price">$55.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Cold brew</h3>
+        <p>Café frío de extracción lenta, servido con hielo.</p>
+        <div class="price">$55.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif" alt="Cold Brew" />
     </div>
-    <img src="https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif" alt="Cold Brew" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Limonada con chía</h3>
-      <p>Natural, con semillas hidratadas y toque de menta.</p>
-      <div class="price">$40.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Limonada con chía</h3>
+        <p>Natural, con semillas hidratadas y toque de menta.</p>
+        <div class="price">$40.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/l1J9zYzCyDOgKMG5G/giphy.gif" alt="Limonada" />
     </div>
-    <img src="https://media.giphy.com/media/l1J9zYzCyDOgKMG5G/giphy.gif" alt="Limonada" />
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <h3>Té helado</h3>
-      <p>Infusión fría con limón y hierbabuena.</p>
-      <div class="price">$45.00 MXN</div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <h3>Té helado</h3>
+        <p>Infusión fría con limón y hierbabuena.</p>
+        <div class="price">$45.00 MXN</div>
+      </div>
+      <img src="https://media.giphy.com/media/f0N9r2BO6kFLO/giphy.gif" alt="Té helado" />
     </div>
-    <img src="https://media.giphy.com/media/f0N9r2BO6kFLO/giphy.gif" alt="Té helado" />
-  </div>
-</div>
-
   </div>
 
   <footer>
@@ -271,6 +384,18 @@
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
+    
+    // Pequeño efecto para el banner al hacer scroll
+    window.addEventListener('scroll', function() {
+      const banner = document.querySelector('.banner');
+      if (window.scrollY > 50) {
+        banner.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+        banner.style.height = '70px';
+      } else {
+        banner.style.boxShadow = 'none';
+        banner.style.height = '80px';
+      }
+    });
   </script>
 </body>
 
